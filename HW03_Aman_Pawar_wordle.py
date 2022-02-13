@@ -73,7 +73,7 @@ def main():
                 continue    
         gamesPlayed+=1
         print(f"\nGames played: {gamesPlayed}")
-        print(f"Win percentage: {(gamesWon/gamesPlayed)*100}")  
+        print(f"Win percentage: {(gamesWon*100/gamesPlayed): .2f}")  
         for i,game in enumerate(gameStats):
             print(f"Games won in {i+1} attempt: {game}")
         
