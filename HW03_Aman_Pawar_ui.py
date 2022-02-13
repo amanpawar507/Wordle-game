@@ -1,3 +1,5 @@
+import HW03_Aman_Pawar_dictionary
+
 def get_input(words, copy_words,x):
     my_word = input("Enter guess #" + str(x+1) + ":")
 
@@ -6,12 +8,14 @@ def get_input(words, copy_words,x):
         my_word = input("Enter guess #" + str(x+1) + ":")
 
     #Calling dictionary functions
-    while HW03_Aman_Pawar_dictionary.is_correct_dict_word(words[x]):
+    while HW03_Aman_Pawar_dictionary.is_correct_dict_word(my_word):
         my_word = input("Enter guess #" + str(x+1) + ":")
 
     return my_word
 
 def letters_5(word):
+    if len(word)==0:
+        quit()
     if len(word) != 5:
         print("Input a word with 5 letters only ")
         return True

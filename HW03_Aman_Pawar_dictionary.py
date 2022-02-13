@@ -1,5 +1,5 @@
 import random
-my_file = open("C:/Users/LENOVO/Desktop/SSW810 Assignments/HW3/words.txt")
+my_file = open("words.txt", "r")
 file_lines = my_file.read()
 dict_list = file_lines.split("\n")
 filtered_list = list(filter(lambda l : len(l) == 5 , dict_list))
