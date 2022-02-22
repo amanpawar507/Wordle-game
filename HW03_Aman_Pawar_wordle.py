@@ -13,6 +13,7 @@ def output_stats(played, won, stats):
     for i,game in enumerate(stats):
         print(f"Games won in {i+1} attempt: {game}")
 
+#compare if wordle and given word is same
 def compare(x,y):
     if(x==y):
         return True
