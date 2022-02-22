@@ -33,7 +33,6 @@ def main():
         words = [None] * 6
         copy_words =[None] * 6
         myWord = dictionary.random_word().upper()
-        print(myWord)
         #Loop for 6 times for 6 attempts
         for x in range(6):
             #variables for storing abbreviations
