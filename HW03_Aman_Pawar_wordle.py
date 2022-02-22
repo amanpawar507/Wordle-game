@@ -13,6 +13,7 @@ def output_stats(played, won, stats):
     for i,game in enumerate(stats):
         print(f"Games won in {i+1} attempt: {game}")
 
+#compare if wordle and given word is same
 def compare(x,y):
     if(x==y):
         return True
@@ -32,7 +33,6 @@ def main():
         words = [None] * 6
         copy_words =[None] * 6
         myWord = dictionary.random_word().upper()
-        print(myWord)
         #Loop for 6 times for 6 attempts
         for x in range(6):
             #variables for storing abbreviations
