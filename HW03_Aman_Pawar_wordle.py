@@ -1,10 +1,23 @@
-import HW03_Aman_Pawar_dictionary
-import HW03_Aman_Pawar_ui
+import HW03_Aman_Pawar_dictionary as dictionary
+import HW03_Aman_Pawar_ui as ui
 
 #Defining color functions
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
 def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
 def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
+
+#Printing statistics
+def output_stats(played, won, stats):
+    print(f"\nGames played: {played}")
+    print(f"Win percentage: {(won*100/played): .2f}")  
+    for i,game in enumerate(stats):
+        print(f"Games won in {i+1} attempt: {game}")
+
+def compare(x,y):
+    if(x==y):
+        return True
+    else:
+        return False
 
 def main():
     gamesPlayed=0
@@ -13,12 +26,13 @@ def main():
     while(True):
         
         print("\n**************WORDLE GAME*******************\n")
-        print('Each guess must be a valid 5 letter word.\nYou have 6 attempts.\nHit the enter button to submit.')
+        print('Each guess must be a valid 5 letter word.\nYou have 6 attempts.\nHit the enter button to submit a word or exit.')
 
         #Initializing variables
         words = [None] * 6
         copy_words =[None] * 6
-        myWord = HW03_Aman_Pawar_dictionary.random_word().upper()
+        myWord = dictionary.random_word().upper()
+        print(myWord)
         #Loop for 6 times for 6 attempts
         for x in range(6):
             #variables for storing abbreviations
@@ -30,10 +44,10 @@ def main():
             
             #Taking input
             print("\nGuess the word")
-            words[x] = HW03_Aman_Pawar_ui.get_input(words, copy_words, x)
+            words[x] = ui.get_input(copy_words, x)
             copy_myWord = myWord
             #Check if the word was correct
-            if (words[x].upper()==myWord):
+            if (compare(words[x].upper(), myWord)):
                 prGreen("Correct guess, You win!")
                 gameStats[x] += 1
                 gamesWon += 1
@@ -72,10 +86,8 @@ def main():
                 if x==5: prRed("You lose!")
                 continue    
         gamesPlayed+=1
-        print(f"\nGames played: {gamesPlayed}")
-        print(f"Win percentage: {(gamesWon*100/gamesPlayed): .2f}")  
-        for i,game in enumerate(gameStats):
-            print(f"Games won in {i+1} attempt: {game}")
+        output_stats(gamesPlayed, gamesWon, gameStats)
+        
         
 if __name__== "__main__":
     main()
