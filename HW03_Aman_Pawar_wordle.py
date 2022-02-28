@@ -1,5 +1,6 @@
 import HW03_Aman_Pawar_dictionary as dictionary
 import HW03_Aman_Pawar_ui as ui
+import HW03_Aman_Pawar_logger as logger
 
 #Defining color functions
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
@@ -20,6 +21,15 @@ def compare(x,y):
     else:
         return False
 
+#clear random used word list
+def clear_list(usedWords):
+    with open("filter_list_file.txt", 'r') as fp:
+        x = len(fp.readlines())
+        if len(usedWords) == x:
+            return True
+        else:
+            return False
+
 def main():
     gamesPlayed=0
     gamesWon=0
@@ -32,7 +42,15 @@ def main():
         #Initializing variables
         words = [None] * 6
         copy_words =[None] * 6
-        myWord = dictionary.random_word().upper()
+        try:
+            myWord = dictionary.random_word().upper()
+        except:
+            print("")
+        print(myWord)
+        used_words = []
+        used_words.append(myWord.lower())
+        if clear_list(used_words):
+            used_words.clear() 
         #Loop for 6 times for 6 attempts
         for x in range(6):
             #variables for storing abbreviations
@@ -86,8 +104,14 @@ def main():
                 if x==5: prRed("You lose!")
                 continue    
         gamesPlayed+=1
-        output_stats(gamesPlayed, gamesWon, gameStats)
-        
+        try:
+            output_stats(gamesPlayed, gamesWon, gameStats)
+        except:
+            print("Fatal error: annot output statistics")
+        try:
+            logger.log_writer(myWord, words, gamesPlayed, gamesWon, gameStats)
+        except:
+            print("Error: Cannot update logs")
         
 if __name__== "__main__":
     main()

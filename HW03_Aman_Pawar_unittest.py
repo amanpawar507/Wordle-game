@@ -4,6 +4,7 @@ from unittest.mock import patch
 import HW03_Aman_Pawar_dictionary as dictionary
 import HW03_Aman_Pawar_ui as ui
 import HW03_Aman_Pawar_wordle as wordle
+import HW03_Aman_Pawar_logger as logger
 
 class WordleTest(unittest.TestCase):
 
@@ -46,6 +47,14 @@ class WordleTest(unittest.TestCase):
     def test_input_not_in_previous_guess(self) -> None :
         """Test when the input word is not correct"""
         self.assertFalse(ui.prev_guesses("BOOKS",["HELLO"]))
+
+    # def test_to_clear_list(self) -> None :
+    #     """Test when our random word list has all words from filtererd list file"""
+    #     self.assertTrue(wordle.clear_list("BOOKS",["HELLO"]))
+
+    # def test_to_clear_list(self) -> None :
+    #     """Test when our random word list does not have all words from filtererd list file"""
+    #     self.assertFalse(wordle.clear_list("BOOKS",["HELLO"]))
 
 if __name__ == "__main__":
     unittest.main()
