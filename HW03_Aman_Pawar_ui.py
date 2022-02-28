@@ -1,17 +1,21 @@
 import HW03_Aman_Pawar_dictionary as dictionary
 
 def get_input(copy_words,x):
-    my_word = input("Enter guess #" + str(x+1) + ":")
-
-    #Calling UI functions 
-    while letters_5(my_word) or only_chars(my_word) or prev_guesses(my_word, copy_words):
+    try:
         my_word = input("Enter guess #" + str(x+1) + ":")
 
-    #Calling dictionary functions
-    while dictionary.is_correct_dict_word(my_word):
-        my_word = input("Enter guess #" + str(x+1) + ":")
+        #Calling UI functions 
+        while letters_5(my_word) or only_chars(my_word) or prev_guesses(my_word, copy_words):
+            my_word = input("Enter guess #" + str(x+1) + ":")
 
-    return my_word
+        #Calling dictionary functions
+        while dictionary.is_correct_dict_word(my_word):
+            my_word = input("Enter guess #" + str(x+1) + ":")
+
+        return my_word
+    except:
+        print("I/O error")
+        return my_word
 
 def letters_5(word):
     if len(word)==0:

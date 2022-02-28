@@ -10,12 +10,16 @@ f.close()
 my_file.close()
 
 def random_word():
-    myFile = open("filter_list_file.txt", "r")
-    fileLines = myFile.read()
-    dictList = fileLines.split("\n")
-    filteredList=list(dictList)
-    my_word = random.choice(filteredList)
-    return my_word
+    try:
+        myFile = open("filter_list_file.txt", "r")
+        fileLines = myFile.read()
+        dictList = fileLines.split("\n")
+        filteredList=list(dictList)
+        my_word = random.choice(filteredList)
+        return my_word
+    except:
+        print("Fatal Error")
+        return my_word
 
 def is_correct_dict_word(word):
     if word in filtered_list:
