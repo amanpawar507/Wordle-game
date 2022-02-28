@@ -48,13 +48,9 @@ class WordleTest(unittest.TestCase):
         """Test when the input word is not correct"""
         self.assertFalse(ui.prev_guesses("BOOKS",["HELLO"]))
 
-    # def test_to_clear_list(self) -> None :
-    #     """Test when our random word list has all words from filtererd list file"""
-    #     self.assertTrue(wordle.clear_list("BOOKS",["HELLO"]))
-
-    # def test_to_clear_list(self) -> None :
-    #     """Test when our random word list does not have all words from filtererd list file"""
-    #     self.assertFalse(wordle.clear_list("BOOKS",["HELLO"]))
+    def test_to_clear_list(self) -> None :
+        """Test when our random word list has all words from filtererd list file"""
+        self.assertFalse(wordle.clear_list(["HELLO","BOOKS"]))
 
 if __name__ == "__main__":
     unittest.main()
