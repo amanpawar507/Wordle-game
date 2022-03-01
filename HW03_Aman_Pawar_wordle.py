@@ -45,8 +45,8 @@ def main():
         try:
             myWord = dictionary.random_word().upper()
         except:
-            print("")
-        print(myWord)
+            print("Error")
+        #print(myWord)
         used_words = []
         used_words.append(myWord.lower())
         if clear_list(used_words):
@@ -62,7 +62,11 @@ def main():
             
             #Taking input
             print("\nGuess the word")
+            
             words[x] = ui.get_input(copy_words, x)
+            if words[x] == None:
+                quit()
+            
             copy_myWord = myWord
             #Check if the word was correct
             if (compare(words[x].upper(), myWord)):

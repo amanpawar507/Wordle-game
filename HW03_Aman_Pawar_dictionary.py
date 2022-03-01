@@ -16,6 +16,7 @@ def random_word():
         dictList = fileLines.split("\n")
         filteredList=list(dictList)
         my_word = random.choice(filteredList)
+        myFile.close()
         return my_word
     except:
         print("Fatal Error")
