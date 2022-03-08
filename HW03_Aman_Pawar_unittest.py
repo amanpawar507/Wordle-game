@@ -52,6 +52,14 @@ class WordleTest(unittest.TestCase):
         """Test when our random word list has all words from filtererd list file"""
         self.assertFalse(wordle.clear_list(["HELLO","BOOKS"]))
 
+    def test_to_check_empty(self) -> None :
+        """Test when it is an empty element"""
+        self.assertTrue(wordle.empty_val(""))
+    
+    def test_to_check_not_empty(self) -> None :
+        """Test when it is not empty"""
+        self.assertFalse(wordle.empty_val("aaron"))
+
 if __name__ == "__main__":
     unittest.main()
 

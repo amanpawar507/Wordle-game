@@ -1,6 +1,7 @@
 import HW03_Aman_Pawar_dictionary as dictionary
 import HW03_Aman_Pawar_ui as ui
 import HW03_Aman_Pawar_logger as logger
+import HW03_Aman_Pawar_occurence as occurence
 
 #Defining color functions
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
@@ -45,7 +46,7 @@ def main():
         try:
             myWord = dictionary.random_word().upper()
         except:
-            print("")
+            print("Error")
         print(myWord)
         used_words = []
         used_words.append(myWord.lower())
@@ -62,7 +63,11 @@ def main():
             
             #Taking input
             print("\nGuess the word")
+            
             words[x] = ui.get_input(copy_words, x)
+            if words[x] == None:
+                quit()
+            
             copy_myWord = myWord
             #Check if the word was correct
             if (compare(words[x].upper(), myWord)):
@@ -112,6 +117,22 @@ def main():
             logger.log_writer(myWord, words, gamesPlayed, gamesWon, gameStats)
         except:
             print("Error: Cannot update logs")
+        # try:
+        #     new_dict = occurence.occurence_stats()
+        # except:
+        #     print("Error")
+        # try:
+        #     occurence.letter_frequency_tuple()
+        # except:
+        #     print("Error")
+        # try:
+        #     occurence.calc_rank()
+        # except:
+        #     print("Error")
+        # try:
+        #    occurence.convert_to_tuple()
+        # except:
+        #     print("Error")
         
 if __name__== "__main__":
     main()
