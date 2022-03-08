@@ -117,11 +117,22 @@ def main():
             logger.log_writer(myWord, words, gamesPlayed, gamesWon, gameStats)
         except:
             print("Error: Cannot update logs")
-        try:
-            occurence.occurence_stats()
-        except:
-            print("Error")
-        occurence.letter_frequency_tuple()
+        # try:
+        #     new_dict = occurence.occurence_stats()
+        # except:
+        #     print("Error")
+        # try:
+        #     occurence.letter_frequency_tuple()
+        # except:
+        #     print("Error")
+        # try:
+        #     occurence.calc_rank()
+        # except:
+        #     print("Error")
+        # try:
+        #    occurence.convert_to_tuple()
+        # except:
+        #     print("Error")
         
 if __name__== "__main__":
     main()
