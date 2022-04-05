@@ -1,7 +1,4 @@
 import csv
-
-from pyparsing import empty
-
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -119,7 +116,7 @@ class Helper:
                 return finalList.head.data
             
         except:
-            print("List is empty cannot find word")
+            print("Failed to solve the Wordle ")
 
 
 #Calls to check function
@@ -127,5 +124,5 @@ class Helper:
 defaultList = SLinkedList()
 finalList = SLinkedList()
 myRun = Helper()
-myRun.rankedWords(['t', 'r', 's'],['b', 'o', 'l', 'a', 'i', 'e' ]) 
+print(myRun.rankedWords(['s', 'k', 't'],['b', 'o', 'l', 'i' ]))
 
