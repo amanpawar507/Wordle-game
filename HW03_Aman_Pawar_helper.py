@@ -1,5 +1,7 @@
 import csv
 
+from pyparsing import empty
+
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -109,7 +111,15 @@ class Helper:
                 if flag == 1:
                     finalList.RemoveNode(word)
         if len(included) != 0 or len(notIncluded) != 0:
-            finalList.Listprint()
+            #finalList.Listprint()
+            print("\n")
+
+        try: 
+            if finalList != None:
+                return finalList.head.data
+            
+        except:
+            print("List is empty cannot find word")
 
 
 #Calls to check function
@@ -117,5 +127,5 @@ class Helper:
 defaultList = SLinkedList()
 finalList = SLinkedList()
 myRun = Helper()
-myRun.rankedWords(['o', 'n', 'e', 's'],['b', 'z'])
+myRun.rankedWords(['t', 'r', 's'],['b', 'o', 'l', 'a', 'i', 'e' ]) 
 
