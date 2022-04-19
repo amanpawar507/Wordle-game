@@ -1,7 +1,9 @@
 import HW03_Aman_Pawar_dictionary as dictionary
 
+
 class Ui:
     my_word = ""
+
     def __init__(self):
         self.di = dictionary.Dictionary()
         self.my_word = ""
@@ -9,14 +11,14 @@ class Ui:
     def get_input(self, copy_words, x):
         try:
             self.my_word = input("Enter guess #" + str(x+1) + ":")
-            #Calling UI functions 
+            # Calling UI functions
             if self.exit_game(self.my_word):
                 return None
 
             while self.letters_5(self.my_word) or self.only_chars(self.my_word) or self.prev_guesses(self.my_word, copy_words):
                 self.my_word = input("Enter guess #" + str(x+1) + ":")
 
-            #Calling dictionary functions
+            # Calling dictionary functions
             while self.di.is_correct_dict_word(self.my_word):
                 self.my_word = input("Enter guess #" + str(x+1) + ":")
 
@@ -28,7 +30,7 @@ class Ui:
         return self._my_word
 
     def letters_5(self, word):
-        if len(word) != 5 and len(word)>0:
+        if len(word) != 5 and len(word) > 0:
             print("Input a word with 5 letters only ")
             return True
         else:

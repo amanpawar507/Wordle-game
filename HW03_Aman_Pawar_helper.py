@@ -1,8 +1,11 @@
 import csv
+
+
 class Node:
     def __init__(self, data=None):
         self.data = data
         self.next = None
+
 
 class SLinkedList:
     def __init__(self):
@@ -17,12 +20,12 @@ class SLinkedList:
         laste = self.head
         while(laste.next):
             laste = laste.next
-        laste.next=NewNode
+        laste.next = NewNode
 
 # Function to remove node
     def RemoveNode(self, Removekey):
         HeadVal = self.head
-         
+
         if (HeadVal is not None):
             if (HeadVal.data == Removekey):
                 self.head = HeadVal.next
@@ -64,9 +67,11 @@ class SLinkedList:
             printval = printval.next
         return arr
 
+
 class Helper:
     myDic = {}
     finalList = []
+
     def __init__(self):
         self.myDic = {}
         self.finalList = []
@@ -74,19 +79,18 @@ class Helper:
     def rankedWords(self, included, notIncluded):
 
         with open('wordRank.csv', newline='') as csvfile:
-                reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-                for row in reader:
-                    self.myDic[row[0].replace(',', '')] = row[1].replace(',', '')
-        
-        #When no input is provided
+            reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            for row in reader:
+                self.myDic[row[0].replace(',', '')] = row[1].replace(',', '')
+
+        # When no input is provided
         if len(included) == 0 and len(notIncluded) == 0:
-            for i in range(1,51):
+            for i in range(1, 51):
                 defaultList.AtEnd(Node(self.myDic[str(i)]))
             defaultList.LListprint()
-        
-        #Add elements with included letters
-        if len(included) != 0:
-            for key in range(1,len(self.myDic)):
+
+        elif len(included) != 0:  # Add elements with included letters
+            for key in range(1, len(self.myDic)):
                 flag = 0
                 for letter in included:
                     if letter not in self.myDic[str(key)]:
@@ -97,7 +101,7 @@ class Helper:
             for key in self.myDic:
                 finalList.AtEnd(self.myDic[str(key)])
 
-        #Remove elements that have not included letters
+        # Remove elements that have not included letters
         if len(notIncluded) != 0:
             myArr = finalList.Traversal()
             for word in myArr:
@@ -108,21 +112,20 @@ class Helper:
                 if flag == 1:
                     finalList.RemoveNode(word)
         if len(included) != 0 or len(notIncluded) != 0:
-            #finalList.Listprint()
+            # finalList.Listprint()
             print("\n")
 
-        try: 
+        try:
             if finalList != None:
                 return finalList.head.data
-            
+
         except:
             print("Failed to solve the Wordle ")
 
 
-#Calls to check function
+# Calls to check function
 
 defaultList = SLinkedList()
 finalList = SLinkedList()
 myRun = Helper()
-print(myRun.rankedWords(['s', 'k', 't'],['b', 'o', 'l', 'i' ]))
-
+print(myRun.rankedWords(['s', 'k', 't'], ['b', 'o', 'l', 'i']))

@@ -1,16 +1,17 @@
 import random
 
+
 class Dictionary:
     filtered_list = []
-    
+
     def __init__(self):
         my_file = open("words.txt", "r")
         file_lines = my_file.read()
         dict_list = file_lines.split("\n")
-        self.filtered_list = list(filter(lambda l : len(l) == 5 , dict_list))
-        f = open("filter_list_file.txt" , "w")
+        self.filtered_list = list(filter(lambda l: len(l) == 5, dict_list))
+        f = open("filter_list_file.txt", "w")
         for listWords in self.filtered_list:
-            f.write(listWords +"\n")
+            f.write(listWords + "\n")
         f.close()
         my_file.close()
 
@@ -19,7 +20,7 @@ class Dictionary:
             myFile = open("filter_list_file.txt", "r")
             fileLines = myFile.read()
             dictList = fileLines.split("\n")
-            filteredList=list(dictList)
+            filteredList = list(dictList)
             my_word = random.choice(filteredList)
             myFile.close()
             return my_word
