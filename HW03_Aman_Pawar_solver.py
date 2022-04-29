@@ -1,5 +1,8 @@
+from cmath import e
 import HW03_Aman_Pawar_helper as helper
 import HW03_Aman_Pawar_wordle as wordle
+import HW03_Aman_Pawar_database as db
+
 import random
 
 
@@ -20,7 +23,7 @@ class Solver:
         # separating words by str1
         return(str1.join(s))
 
-    def mySolver(self):
+    def mySolver(self, dbLogger):
 
         f = open("filter_list_file.txt")
         self.words = f.read().split("\n")
@@ -40,19 +43,19 @@ class Solver:
         initialGuess = "sales"
         guesslist = []
         print("The answer for this round is", myWordle)
-        print()
-
+        dbLogger.insert_to_game(myWordle)
         while attempts < 6:
             print(f'Guess #{attempts+1}')
             print("My guess is", initialGuess)
             try:
                 result = self.myMain.solverHelper(
-                    myWordle.upper(), attempts, initialGuess.upper())
-            except:
-                print("Not found")
+                    myWordle.upper(), attempts, initialGuess.upper(), dbLogger)
+            except Exception as e:
+                print(e)
 
             if result == "Wordle found":
                 print(f"You win! Your word is {initialGuess}")
+                dbLogger.insert_to_statistics(True, attempts+1, myWordle)
                 break
 
             for i in range(5):
@@ -84,8 +87,15 @@ class Solver:
             initialGuess = self.helps.rankedWords(goodLetters, badLetters)
             if initialGuess == None:
                 print("Failed to solve the Wordle \n")
+                dbLogger.insert_to_statistics(False, attempts, myWordle)
                 break
 
 
 myRun = Solver()
-myRun.mySolver()
+dbLogger = db.DbLogger()
+for i in range(10):
+    print(f"game number: {i}")
+    myRun.mySolver(dbLogger)
+dbLogger.report_analysis("2022-03-01 20:45:45.049724",
+                         "2022-07-01 20:45:45.049724")
+dbLogger.close()
