@@ -43,17 +43,17 @@ class Main:
             else:
                 return False
 
-    def solverHelper(self, myWord, x, initialGuess):
+    def solverHelper(self, myWord, x, initialGuess, my_db_logger):
         # variables for storing abbreviations
         final_list = [None] * 5
         final_string = ""
-
         # Taking input
         words = [None]*6
         words[x] = initialGuess
         if words[x] == None:
             quit()
-
+        my_db_logger.insert_to_details(
+            attempt=x+1, wordle=myWord, input_word=initialGuess)
         copy_myWord = myWord
         # Check if the word was correct
         if (self.compare(words[x].upper(), myWord)):
