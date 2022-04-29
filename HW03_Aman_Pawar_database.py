@@ -16,7 +16,7 @@ class DbLogger:
         self.curs.execute(
             '''CREATE TABLE details (game_id integer primary key autoincrement, time timestamp, attempt integer, input text, wordle text)''')
         self.curs.execute(
-            '''CREATE TABLE statistics (game_id integer primary key autoincrement, time timestamp, win_status text, number_of_attempt integer, wordle text)''')
+            '''CREATE TABLE statistics (game_id integer primary key autoincrement, time timestamp, win_status text, number_of_attempt integer)''')
         self.ip = self.get_ip()
 
     def get_ip(self):
@@ -44,10 +44,10 @@ class DbLogger:
             "insert into details values (null, ?, ?, ?, ?)", (time, attempt, input_word, wordle))
         self.con.commit()
 
-    def insert_to_statistics(self, win_status, number_of_games, wordle):
+    def insert_to_statistics(self, win_status, number_of_games):
         time = datetime.now()
         self.curs.execute(
-            "insert into statistics values (null, ?, ?, ?, ?)", (time, win_status, number_of_games, wordle))
+            "insert into statistics values (null, ?, ?, ?)", (time, win_status, number_of_games))
         self.con.commit()
 
     def close(self):

@@ -55,7 +55,7 @@ class Solver:
 
             if result == "Wordle found":
                 print(f"You win! Your word is {initialGuess}")
-                dbLogger.insert_to_statistics(True, attempts+1, myWordle)
+                dbLogger.insert_to_statistics(True, attempts+1)
                 break
 
             for i in range(5):
@@ -87,13 +87,13 @@ class Solver:
             initialGuess = self.helps.rankedWords(goodLetters, badLetters)
             if initialGuess == None:
                 print("Failed to solve the Wordle \n")
-                dbLogger.insert_to_statistics(False, attempts, myWordle)
+                dbLogger.insert_to_statistics(False, attempts)
                 break
 
 
 myRun = Solver()
 dbLogger = db.DbLogger()
-for i in range(10):
+for i in range(1000):
     print(f"game number: {i}")
     myRun.mySolver(dbLogger)
 dbLogger.report_analysis("2022-03-01 20:45:45.049724",
