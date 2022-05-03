@@ -1,4 +1,6 @@
-# ssw810_wordle_game
-Modular wordle game in Python which shows statistics of game after playing.
-#Description: 
--You have six chances to guess the day's secret five-letter word. Type in a word as a guess, and the game tells you which letters are or aren't in the word. The aim is to figure out the secret word with the fewest guesses.
+# Wordle Game
+Guess the WORDLE in six tries.
+Each guess must be a valid five-letter word. Hit the enter to submit.
+After each guess, the color of the tiles will change to show how close your guess was to the word. This is a modular wordle game in Python which shows statistics of game after playing.
+# How to run:
+- Run the wordle file in any IDE with python installed and start playing the game.
